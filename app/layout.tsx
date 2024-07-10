@@ -36,7 +36,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <ContextProvider>
             <GlobalStyleProvider>
-              <Sidebar />
+              {userId && <Sidebar />}
               <div className="w-full">{children}</div>
             </GlobalStyleProvider>
           </ContextProvider>
