@@ -46,6 +46,7 @@ function Button({
         color: color || theme.colorGrey0,
       }}
       theme={theme}
+      onClick={click}
     >
       {icon && icon}
       {name}
