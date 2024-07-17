@@ -7,6 +7,8 @@ import Image from "next/image";
 import menu from "@/app/utils/menu";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { logout } from "@/app/utils/Icons";
+import Button from "../Button/Button";
 
 function Sidebar() {
   const { theme } = useGlobalState();
@@ -47,7 +49,17 @@ function Sidebar() {
           );
         })}
       </ul>
-      <button></button>
+      <div className="sign-out relative m-6">
+        <Button
+          name={"Sign Out"}
+          type={"submit"}
+          padding={"0.4rem 0.8rem"}
+          borderRad={"0.8rem"}
+          fw={"500"}
+          fs={"1.2rem"}
+          icon={logout}
+        />
+      </div>{" "}
     </SidebarStyled>
   );
 }
