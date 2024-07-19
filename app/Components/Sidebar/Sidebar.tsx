@@ -9,7 +9,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { logout } from "@/app/utils/Icons";
 import Button from "../Button/Button";
-import { useClerk } from "@clerk/nextjs";
+import { useClerk, UserButton } from "@clerk/nextjs";
 
 function Sidebar() {
   const { theme } = useGlobalState();
@@ -28,6 +28,9 @@ function Sidebar() {
         <div className="profile-overlay"></div>
         <div className="image">
           <Image width={70} height={70} src="/avatar1.png" alt="profile" />
+        </div>
+        <div className="user-btn absolute z-20 top-0 w-full h-full">
+          <UserButton />
         </div>
         <h1>
           <span>Marc</span>
@@ -81,22 +84,6 @@ const SidebarStyled = styled.nav`
   justify-content: space-between;
 
   color: ${(props) => props.theme.colorGrey3};
-
-  .toggle-nav {
-    display: none;
-    padding: 0.8rem 0.9rem;
-    position: absolute;
-    right: -69px;
-    top: 1.8rem;
-
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-
-    background-color: ${(props) => props.theme.colorBg2};
-    border-right: 2px solid ${(props) => props.theme.borderColor2};
-    border-top: 2px solid ${(props) => props.theme.borderColor2};
-    border-bottom: 2px solid ${(props) => props.theme.borderColor2};
-  }
 
   .user-btn {
     .cl-rootBox {
