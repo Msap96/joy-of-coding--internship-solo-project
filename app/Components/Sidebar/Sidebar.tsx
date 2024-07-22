@@ -90,14 +90,15 @@ const SidebarStyled = styled.nav`
       width: 100%;
       height: 100%;
 
-      .cl-userButtonBox {
+      .cl-userButtonTrigger{
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+
+      .cl-userButtonBox{
         width: 100%;
         height: 100%;
 
-        .cl-userButtonTrigger {
-          width: 100%;
-          height: 100%;
-          opacity: 0;
         }
       }
     }
@@ -132,9 +133,9 @@ const SidebarStyled = styled.nav`
 
       opacity: 0.2;
     }
-
+    
     h1 {
-      font-size: 1.2rem;
+      font-size 1.2rem;
       display: flex;
       flex-direction: column;
 
