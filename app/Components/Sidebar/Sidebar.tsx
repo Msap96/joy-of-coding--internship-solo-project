@@ -9,11 +9,19 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { logout } from "@/app/utils/Icons";
 import Button from "../Button/Button";
-import { useClerk, UserButton } from "@clerk/nextjs";
+import { useClerk, UserButton, useUser } from "@clerk/nextjs";
 
 function Sidebar() {
   const { theme } = useGlobalState();
   const { signOut } = useClerk();
+
+  const { user } = useUser();
+
+  const { firstName, lastName, imageUrl } = user || {
+    firstName: "",
+    lastName: "",
+    imageUrl: "",
+  };
 
   const router = useRouter();
   const pathname = usePathname();
@@ -27,14 +35,13 @@ function Sidebar() {
       <div className="profile">
         <div className="profile-overlay"></div>
         <div className="image">
-          <Image width={70} height={70} src="/avatar1.png" alt="profile" />
+          <Image width={70} height={70} src={imageUrl} alt="profile" />
         </div>
         <div className="user-btn absolute z-20 top-0 w-full h-full">
           <UserButton />
         </div>
         <h1>
-          <span>Marc</span>
-          <span> Sap</span>
+          {firstName} {lastName}
         </h1>
       </div>
       <ul className="nav-items">
@@ -105,7 +112,7 @@ const SidebarStyled = styled.nav`
   }
 
   .profile {
-    margin: 1.5rem;
+    margin: 1.5 rem;
     padding: 1rem 0.8rem;
     position: relative;
 
