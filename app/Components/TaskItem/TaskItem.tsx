@@ -2,34 +2,38 @@
 
 import { useGlobalState } from "@/app/context/globalProvider";
 import { edit, trash } from "@/app/utils/Icons";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import formatDate from "@/app/utils/formatDate";
 
-interface Props {
+export interface TaskData {
+  id: string;
   title: string;
   description: string;
   date: string;
   isCompleted: boolean;
-  id: string;
 }
-function TaskItem({ title, description, date, isCompleted, id }: Props) {
-  const { theme, deleteTask, updateTask } = useGlobalState();
+
+function TaskItem(taskData: TaskData) {
+  const { theme, openModal, deleteTask, updateTask, currentTask } =
+    useGlobalState();
   return (
     <TaskItemStyled theme={theme}>
-      <h1> {title} </h1>
-      <p> {description} </p>
-      <p className="date"> {formatDate(date)} </p>
+      <h1> {taskData.title} </h1>
+      <p> {taskData.description} </p>
+      <p className="date"> {formatDate(taskData.date)} </p>
       <div className="task-footer">
-        {isCompleted ? (
+        {taskData.isCompleted ? (
           <button
             className="completed"
             onClick={() => {
+              // const task = taskData
+              // task.isCompleted = !task.isCompleted
+              // updateTask(task);
               const task = {
-                id,
-                isCompleted: !isCompleted,
+                id: taskData.id,
+                isCompleted: !taskData.isCompleted,
               };
-
               updateTask(task);
             }}
           >
@@ -40,21 +44,27 @@ function TaskItem({ title, description, date, isCompleted, id }: Props) {
             className="incomplete"
             onClick={() => {
               const task = {
-                id,
-                isCompleted: !isCompleted,
+                id: taskData.id,
+                isCompleted: !taskData.isCompleted,
               };
-
               updateTask(task);
             }}
           >
             Incomplete
           </button>
         )}
-        <button className="edit">{edit}</button>
+        <button
+          className="edit"
+          onClick={() => {
+            openModal(currentTask);
+          }}
+        >
+          {edit}
+        </button>
         <button
           className="delete"
           onClick={() => {
-            deleteTask(id);
+            deleteTask(taskData.id);
           }}
         >
           {trash}

@@ -24,6 +24,14 @@ body {
   height: 100vh;
 }
 
+input,
+textarea,
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
