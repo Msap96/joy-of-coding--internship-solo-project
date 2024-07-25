@@ -18,7 +18,7 @@ function Tasks({ title, tasks }: Props) {
 
   return (
     <TaskStyled theme={theme}>
-      {modal && <Modal content={<CreateContent />} />}
+      {modal && <Modal />}
       <h1>{title}</h1>
       <div className="tasks grid">
         {tasks.map((task) => (

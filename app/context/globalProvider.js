@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useContext, useEffect } from "react";
 import themes from "./themes";
-import axios from "axios";
+import axios, { all } from "axios";
 import { useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
 
@@ -97,6 +97,7 @@ export const GlobalProvider = ({ children }) => {
         currentTask,
         openModal,
         closeModal,
+        allTasks
       }}
     >
       <GlobalUpdateContext.Provider value={{}}>

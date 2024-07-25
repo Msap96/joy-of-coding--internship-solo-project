@@ -27,9 +27,6 @@ function TaskItem(taskData: TaskData) {
           <button
             className="completed"
             onClick={() => {
-              // const task = taskData
-              // task.isCompleted = !task.isCompleted
-              // updateTask(task);
               const task = {
                 id: taskData.id,
                 isCompleted: !taskData.isCompleted,
@@ -56,7 +53,7 @@ function TaskItem(taskData: TaskData) {
         <button
           className="edit"
           onClick={() => {
-            openModal(currentTask);
+            openModal(taskData);
           }}
         >
           {edit}
