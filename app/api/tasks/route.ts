@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       }
     if (description.length > 75) {
         return NextResponse.json({
-          error: "Descrition is too long, must be under 75 char",
+          error: "Description is too long, must be under 75 char",
           status: 400,
         });
       }
