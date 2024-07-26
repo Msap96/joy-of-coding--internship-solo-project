@@ -177,7 +177,7 @@ const ModalStyled = styled.div`
           display: block;
           margin-bottom: 0.5rem;
           font-weight: bold;
-          color: #000; /* Set font color to black */
+          color: #000;
         }
 
         input,
@@ -187,7 +187,7 @@ const ModalStyled = styled.div`
           margin-top: 0.5rem;
           border-radius: 4px;
           border: 1px solid #ccc;
-          color: #000; /* Set font color to black */
+          color: #000;
         }
 
         input[type="checkbox"] {
