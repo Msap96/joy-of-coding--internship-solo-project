@@ -86,7 +86,7 @@ const Modal: React.FC = () => {
             ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="date">Date:</label>
+            <label htmlFor="date">Due Date:</label>
             <input
               type="date"
               id="date"
