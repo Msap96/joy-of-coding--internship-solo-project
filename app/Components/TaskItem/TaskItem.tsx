@@ -7,6 +7,7 @@ import styled from "styled-components";
 import formatDate from "@/app/utils/formatDate";
 
 export interface TaskData {
+  isImportant: boolean;
   id: string;
   title: string;
   description: string;

@@ -13,7 +13,8 @@ const Modal: React.FC = () => {
     (currentTask?.title == null || currentTask?.title == "") &&
     (currentTask?.description == null || currentTask?.description == "") &&
     (currentTask?.date == null || currentTask?.date == "") &&
-    (currentTask?.isCompleted == null || currentTask?.isCompleted == "");
+    (currentTask?.isCompleted == null || currentTask?.isCompleted == "") &&
+    (currentTask?.isImportant == null || currentTask?.isImportant == "");
   // Initialize state with currentTask values or default values
   const [taskData, setTaskData] = useState<TaskData>({
     id: currentTask?.id || "",
@@ -21,6 +22,7 @@ const Modal: React.FC = () => {
     description: currentTask?.description || "",
     date: currentTask?.date || "",
     isCompleted: currentTask?.isCompleted || false,
+    isImportant: currentTask?.isImportant || true,
   });
 
   const handleChange = (
@@ -100,6 +102,15 @@ const Modal: React.FC = () => {
               type="checkbox"
               id="isCompleted"
               checked={taskData.isCompleted}
+              onChange={(e) => handleChange(e as ChangeEvent<HTMLInputElement>)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="isImportant">Important:</label>
+            <input
+              type="checkbox"
+              id="isImportant"
+              checked={taskData.isImportant}
               onChange={(e) => handleChange(e as ChangeEvent<HTMLInputElement>)}
             />
           </div>

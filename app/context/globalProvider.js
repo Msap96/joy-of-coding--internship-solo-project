@@ -65,6 +65,7 @@ export const GlobalProvider = ({ children }) => {
 
   const createTask = async (task) => {
     try {
+      console.log(task)
       const res = await axios.post(`/api/tasks`, task);
 
       if (res.data.error) {
