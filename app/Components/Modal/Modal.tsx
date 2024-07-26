@@ -6,8 +6,7 @@ import toast from "react-hot-toast";
 import { TaskData } from "../TaskItem/TaskItem";
 
 const Modal: React.FC = () => {
-  const { closeModal, currentTask, allTasks, createTask, updateTask } =
-    useGlobalState();
+  const { closeModal, currentTask, createTask, updateTask } = useGlobalState();
   var newTask =
     (currentTask?.title == null || currentTask?.title == "") &&
     (currentTask?.description == null || currentTask?.description == "") &&

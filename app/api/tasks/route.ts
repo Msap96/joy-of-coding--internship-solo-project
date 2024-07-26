@@ -23,6 +23,12 @@ export async function POST(req: Request) {
           status: 400,
         });
       }
+    if (description.length > 75) {
+        return NextResponse.json({
+          error: "Descrition is too long, must be under 75 char",
+          status: 400,
+        });
+      }
 
       const task = await prisma.task.create({
         data: {
