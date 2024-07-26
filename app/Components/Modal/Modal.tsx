@@ -2,7 +2,6 @@
 import { useGlobalState } from "@/app/context/globalProvider";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { TaskData } from "../TaskItem/TaskItem";
 
@@ -96,7 +95,7 @@ const Modal: React.FC = () => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group inline">
             <label htmlFor="isCompleted">Completed:</label>
             <input
               type="checkbox"
@@ -105,7 +104,7 @@ const Modal: React.FC = () => {
               onChange={(e) => handleChange(e as ChangeEvent<HTMLInputElement>)}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group inline">
             <label htmlFor="isImportant">Important:</label>
             <input
               type="checkbox"
@@ -165,6 +164,12 @@ const ModalStyled = styled.div`
       display: flex;
       flex-direction: column;
 
+      h1 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
       .form-group {
         margin-bottom: 1rem;
 
@@ -187,6 +192,19 @@ const ModalStyled = styled.div`
 
         input[type="checkbox"] {
           margin-top: 0;
+        }
+      }
+
+      .inline {
+        display: flex;
+        align-items: center;
+
+        label {
+          margin-right: 1rem;
+        }
+
+        input {
+          margin-left: 0.5rem;
         }
       }
 

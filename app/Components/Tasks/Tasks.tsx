@@ -3,7 +3,6 @@
 import { useGlobalState } from "@/app/context/globalProvider";
 import React from "react";
 import styled from "styled-components";
-import CreateContent from "../Modal/CreateContent";
 import TaskItem from "../TaskItem/TaskItem";
 import { plus } from "@/app/utils/Icons";
 import Modal from "../Modal/Modal";

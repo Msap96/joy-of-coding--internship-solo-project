@@ -16,8 +16,7 @@ export interface TaskData {
 }
 
 function TaskItem(taskData: TaskData) {
-  const { theme, openModal, deleteTask, updateTask, currentTask } =
-    useGlobalState();
+  const { theme, openModal, deleteTask, updateTask } = useGlobalState();
   return (
     <TaskItemStyled theme={theme}>
       <h1> {taskData.title} </h1>
