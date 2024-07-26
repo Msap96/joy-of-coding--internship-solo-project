@@ -21,7 +21,7 @@ function TaskItem(taskData: TaskData) {
     <TaskItemStyled theme={theme}>
       <h1> {taskData.title} </h1>
       <p> {taskData.description} </p>
-      <p className="date"> {formatDate(taskData.date)} </p>
+      <p className="date"> Deadline: {formatDate(taskData.date)} </p>
       <div className="task-footer">
         {taskData.isCompleted ? (
           <button
