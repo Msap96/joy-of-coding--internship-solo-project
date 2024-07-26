@@ -6,15 +6,6 @@ import axios, { all } from "axios";
 import { useUser } from "@clerk/nextjs";
 import toast from "react-hot-toast";
 
-// Define the shape of the TaskData object
-// This is for reference, since it's not TypeScript
-// const TaskData = {
-//   title: "",
-//   description: "",
-//   date: "",
-//   isCompleted: false,
-//   id: 0
-// };
 
 export const GlobalContext = createContext();
 export const GlobalUpdateContext = createContext();
