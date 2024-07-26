@@ -1,65 +1,3 @@
-// "use client";
-// import { useGlobalState } from "@/app/context/globalProvider";
-// import React from "react";
-// import styled from "styled-components";
-
-// interface Props {
-//   content: React.ReactNode;
-// }
-
-// function Modal({ content }: Props) {
-//   const { closeModal, currentTask } = useGlobalState();
-
-//   const { theme } = useGlobalState();
-//   return (
-//     <ModalStyled theme={theme}>
-//       <div className="modal-overlay" onClick={closeModal}></div>
-//       <div className="modal-content">{currentTask && content}</div>
-//     </ModalStyled>
-//   );
-// }
-
-// const ModalStyled = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100vh;
-//   z-index: 100;
-
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   .modal-overlay {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100vh;
-//     background-color: rgba(0, 0, 0, 0.45);
-//     filter: blur(4px);
-//   }
-
-//   .modal-content {
-//     margin: 0 1rem;
-
-//     padding: 2rem;
-//     position: relative;
-//     max-width: 630px;
-//     width: 100%;
-//     z-index: 100;
-
-//     border-radius: 1rem;
-//     background-color: ${(props) => props.theme.colorBg2};
-//     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
-//     border-radius: ${(props) => props.theme.borderRadiusMd2};
-
-//     @media screen and (max-width: 450px) {
-//       font-size: 90%;
-//     }
-//   }
-// `;
 "use client";
 import { useGlobalState } from "@/app/context/globalProvider";
 import React, { useState, ChangeEvent, FormEvent } from "react";
@@ -69,7 +7,8 @@ import toast from "react-hot-toast";
 import { TaskData } from "../TaskItem/TaskItem";
 
 const Modal: React.FC = () => {
-  const { closeModal, currentTask, allTasks } = useGlobalState();
+  const { closeModal, currentTask, allTasks, createTask, updateTask } =
+    useGlobalState();
   var newTask =
     (currentTask?.title == null || currentTask?.title == "") &&
     (currentTask?.description == null || currentTask?.description == "") &&
@@ -109,39 +48,11 @@ const Modal: React.FC = () => {
     try {
       if (newTask) {
         // Create task
-
-        try {
-          const res = await axios.post("/api/tasks", taskData);
-
-          if (res.data.error) {
-            toast.error(res.data.error);
-          }
-
-          if (!res.data.error) {
-            toast.success("Task created successfully.");
-          }
-        } catch (error) {
-          toast.error("Something went wrong.");
-          console.log(error);
-        }
+        createTask(taskData);
       } else {
         // Update task
-        try {
-          const res = await axios.put(`/api/tasks/${currentTask.id}`, taskData);
-
-          if (res.data.error) {
-            toast.error(res.data.error);
-          }
-
-          if (!res.data.error) {
-            toast.success("Task updated successfully.");
-          }
-        } catch (error) {
-          toast.error("Something went wrong.");
-          console.log(error);
-        }
+        updateTask(taskData);
       }
-      allTasks();
       closeModal();
     } catch (error) {
       console.error(error);
@@ -224,7 +135,8 @@ const ModalStyled = styled.div`
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.45);
+    filter: blur(4px);
   }
 
   .modal-content {
