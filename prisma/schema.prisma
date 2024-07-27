@@ -19,7 +19,7 @@ model Task {
   description String
   date        String
   isCompleted Boolean @default(false)
-  isImportant Boolean @default(false)
+  isImportant Boolean @default(true)
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
